@@ -1,106 +1,86 @@
 import FadeUp from "./FadeUp";
 
-interface Testimonial {
-  quote: string;
-  name: string;
-  route: string;
-  program: string;
-  initials: string;
-}
-
-const testimonials: Testimonial[] = [
+const videos = [
   {
-    quote:
-      "My tourist visa was expiring in 7 weeks and I was in full panic mode. I enrolled within 48 hours, had my documents in 9 days, and my student permit came through in 6 weeks. For the first time in two years, I can actually plan my future.",
-    name: "Maria S.",
-    route: "Brazil → Lisbon",
-    program: "UX / UI Design, 2023",
-    initials: "MS",
+    quote: "\"I landed my first job in Lisbon within 3 months of enrolling\"",
+    gradient: "linear-gradient(135deg, #1E293B 0%, #E85D26 100%)",
   },
   {
-    quote:
-      "I was a marketing manager in Moscow with 8 years of experience, but in Portugal nobody cared about my Russian credentials. Facultet gave me a certificate local employers actually recognized. Four months after graduation, my salary doubled.",
-    name: "Dmitri K.",
-    route: "Russia → Porto",
-    program: "Digital Marketing, 2022",
-    initials: "DK",
+    quote: "\"Renewing my permit felt like a maze. Facultet prepared every document — AIMA accepted it all first time.\"",
+    gradient: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)",
   },
   {
-    quote:
-      "I was terrified it was too late to change careers at 34. By month four I was actually building things. Got my residence permit in week 8. Landed my first developer job two months after graduation. If you're on the fence: don't wait.",
-    name: "Priya A.",
-    route: "India → Lisbon",
-    program: "Frontend Development, 2023",
-    initials: "PA",
+    quote: "\"From assistant to freelance PM — all in just 4 months\"",
+    gradient: "linear-gradient(135deg, #166534 0%, #1E293B 100%)",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section className="bg-dark-section py-20 lg:py-28">
-      <div className="max-w-6xl mx-auto px-5">
-        <FadeUp className="text-center mb-14">
-          <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
-            Student stories
-          </p>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white leading-tight">
-            In their own words
+    <section id="testimonials" className="bg-white py-20 lg:py-24">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-[160px]">
+
+        <FadeUp className="text-center mb-10">
+          <h2 className="text-[#1E293B] text-[40px] font-extrabold tracking-[-1px]">
+            Watch Their Journey
           </h2>
-          <p className="text-white/50 mt-4 text-lg">
-            Real students. Real outcomes. Real names.
+          <p className="text-[#64748B] text-base mt-3">
+            Unscripted stories from real Facultet graduates
           </p>
         </FadeUp>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map(({ quote, name, route, program, initials }, i) => (
-            <FadeUp key={name} delay={i * 0.1}>
-              <div className="h-full bg-brand-light/40 border border-white/10 rounded-2xl p-7 flex flex-col">
-                {/* Stars */}
-                <div className="flex gap-0.5 mb-5">
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <span key={j} className="text-amber-400 text-sm">★</span>
-                  ))}
-                </div>
-
-                {/* Quote */}
-                <blockquote className="text-white/80 text-sm leading-relaxed italic flex-1 mb-7">
-                  &ldquo;{quote}&rdquo;
-                </blockquote>
-
-                {/* Author */}
-                <div className="flex items-center gap-3 pt-5 border-t border-white/10">
-                  <div className="w-11 h-11 rounded-full bg-accent/20 border border-accent/30 flex items-center justify-center text-accent font-bold text-sm flex-shrink-0">
-                    {initials}
-                  </div>
-                  <div className="leading-tight">
-                    <p className="font-semibold text-white text-sm">{name}</p>
-                    <p className="text-white/40 text-xs">{route}</p>
-                    <p className="text-white/40 text-xs">{program}</p>
+        <FadeUp delay={0.1}>
+          <div className="flex flex-col sm:flex-row gap-5 justify-center">
+            {videos.map(({ quote, gradient }, i) => (
+              <div key={i} className="flex flex-col gap-2.5 w-full sm:w-[280px]">
+                {/* Video card placeholder */}
+                <div
+                  className="w-full rounded-xl overflow-hidden relative"
+                  style={{ height: 498, background: gradient }}
+                >
+                  {/* Play button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 hover:bg-white/30 transition-all cursor-pointer">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                      </svg>
+                    </div>
                   </div>
                 </div>
+
+                <p className="text-[#64748B] text-sm italic leading-[1.4] font-medium">
+                  {quote}
+                </p>
               </div>
-            </FadeUp>
-          ))}
-        </div>
-
-        <FadeUp delay={0.3} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#consult"
-            className="inline-block bg-accent hover:bg-accent-hover text-white font-semibold px-8 py-3.5 rounded-lg transition-all hover:-translate-y-0.5 text-sm"
-          >
-            Book My Free Consultation
-          </a>
-          <a
-            href="#programmes"
-            className="inline-block bg-white/10 hover:bg-white/15 border border-white/40 text-white font-semibold px-8 py-3.5 rounded-lg transition-all text-sm"
-          >
-            See Programs →
-          </a>
+            ))}
+          </div>
         </FadeUp>
-        <FadeUp delay={0.4}>
-          <p className="text-center text-white/25 text-xs mt-6">
-            Read 312 more reviews on Google Maps · Average rating 4.9 / 5
-          </p>
+
+        {/* Google reviews badge */}
+        <FadeUp delay={0.2} className="flex justify-center mt-10">
+          <div className="flex items-center gap-5 bg-white border border-[#E2E8F0] rounded-2xl px-8 py-5 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+            <span className="text-[#4285F4] text-[32px] font-extrabold leading-none">G</span>
+            <div className="w-px h-12 bg-[#E2E8F0]" />
+            <div className="flex flex-col gap-0.5">
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#F59E0B">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                  </svg>
+                ))}
+              </div>
+              <p className="text-[#1E293B] text-sm font-semibold">5.0 rating</p>
+            </div>
+            <div className="w-px h-12 bg-[#E2E8F0]" />
+            <div className="flex flex-col gap-0.5">
+              <p className="text-[#1E293B] text-sm font-bold">47 reviews</p>
+              <p className="text-[#64748B] text-xs">on Google</p>
+            </div>
+            <div className="w-px h-12 bg-[#E2E8F0]" />
+            <a href="#" className="text-accent text-sm font-semibold hover:underline">
+              Read all reviews →
+            </a>
+          </div>
         </FadeUp>
       </div>
     </section>

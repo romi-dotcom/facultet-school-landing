@@ -1,169 +1,139 @@
+"use client";
+
+import { useState } from "react";
 import FadeUp from "./FadeUp";
 
-const outcomes = [
-  { stat: "2,147", label: "Graduates", sub: "since 2019" },
-  { stat: "94%",   label: "Visa Approval Rate", sub: "across all student applications" },
-  { stat: "78%",   label: "Employed in Their Field", sub: "within 6 months of graduating" },
-  { stat: "4.9/5", label: "Student Rating", sub: "from 312 verified reviews" },
+const stories = [
+  {
+    name: "Maria S.",
+    country: "Brazil",
+    programme: "UX/UI Design",
+    quote: "My permit was 3 weeks from expiring. Facultet prepared all documents in 4 days — AIMA renewed it without issues. And now I'm working at a Lisbon agency.",
+    outcome: "UX Designer at a Lisbon studio",
+    photo: "https://images.unsplash.com/photo-1651107466227-1a7100432973?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=360&q=80",
+  },
+  {
+    name: "Arjun P.",
+    country: "India",
+    programme: "Digital Marketing",
+    quote: "I had 8 years of marketing experience but zero Portuguese employers called back. One semester at Facultet and I had a local certificate, a real portfolio, and an offer.",
+    outcome: "Marketing Manager at Porto startup",
+    photo: "https://images.unsplash.com/photo-1607710577791-a31393e17748?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=360&q=80",
+  },
+  {
+    name: "Priya K.",
+    country: "Ukraine",
+    programme: "Frontend Development",
+    quote: "I needed both — a legal path to stay and a way to break into tech. Facultet solved both. My permit is renewed and I'm now a junior dev at a remote company.",
+    outcome: "Junior Frontend Developer, remote",
+    photo: "https://images.unsplash.com/photo-1517945577684-acd9255116a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=360&q=80",
+  },
 ];
 
 export default function SuccessStories() {
-  return (
-    <>
-      {/* Outcome stats */}
-      <section className="bg-white py-20 lg:py-28">
-        <div className="max-w-6xl mx-auto px-5">
-          <FadeUp className="text-center mb-14">
-            <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
-              After Facultet
-            </p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold text-brand leading-tight">
-              What the numbers actually say
-            </h2>
-          </FadeUp>
+  const [active, setActive] = useState(0);
+  const story = stories[active];
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
-            {outcomes.map(({ stat, label, sub }, i) => (
-              <FadeUp key={label} delay={i * 0.08}>
-                <div className={`rounded-2xl p-6 lg:p-8 text-center border ${
-                  i === 0 ? "bg-brand border-brand text-white" :
-                  i === 1 ? "bg-accent border-accent text-white" :
-                  i === 2 ? "bg-warm border-warm-dark text-brand" :
-                  "bg-white border-border text-brand shadow-sm"
-                }`}>
-                  <p className={`font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-2 ${
-                    i < 2 ? "text-white" : "text-brand"
-                  }`}>
-                    {stat}
-                  </p>
-                  <p className={`font-bold text-sm mb-1 ${
-                    i < 2 ? "text-white/80" : "text-brand"
-                  }`}>
-                    {label}
-                  </p>
-                  <p className={`text-xs ${
-                    i < 2 ? "text-white/50" : "text-text-muted"
-                  }`}>
-                    {sub}
-                  </p>
+  return (
+    <section id="success-stories" className="bg-[#F8FAFC] py-20 lg:py-24 overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-[160px]">
+
+        {/* Header */}
+        <FadeUp>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+            <div className="flex flex-col gap-4">
+              <h2 className="text-[#1E293B] text-[40px] font-extrabold leading-[1.1] tracking-[-1px]">
+                From Zero to Career<br />in 3–5 Months
+              </h2>
+              <div className="inline-flex items-center gap-1.5 bg-[#FFF7ED] text-accent border border-[#FDBA74] text-sm font-bold px-4 py-2 rounded-full self-start">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M8 21l4-4 4 4M12 3v14"/>
+                </svg>
+                Success Rate 94%
+              </div>
+            </div>
+            <p className="text-[#64748B] text-[18px] leading-[1.5] max-w-sm">
+              How 3 students transformed their careers in Portugal
+            </p>
+          </div>
+        </FadeUp>
+
+        {/* Story card */}
+        <FadeUp delay={0.1}>
+          <div className="flex flex-col lg:flex-row rounded-[20px] overflow-hidden border border-[#E2E8F0] shadow-[0_4px_24px_rgba(0,0,0,0.06)] bg-white h-auto lg:h-[480px]">
+            {/* Photo */}
+            <div
+              className="lg:w-[360px] h-[240px] lg:h-full flex-shrink-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${story.photo})` }}
+            />
+
+            {/* Content */}
+            <div
+              className="flex flex-col justify-between gap-5 p-8 lg:p-[32px] flex-1"
+              style={{ borderLeft: "1px solid rgba(255,255,255,0.5)" }}
+            >
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold text-sm">
+                    {story.name.charAt(0)}
+                  </div>
+                  <div>
+                    <p className="text-[#1E293B] font-bold text-sm">{story.name}</p>
+                    <p className="text-[#64748B] text-xs">{story.country} · {story.programme}</p>
+                  </div>
                 </div>
-              </FadeUp>
+
+                <blockquote className="text-[#1E293B] text-xl font-semibold leading-[1.4] italic">
+                  &ldquo;{story.quote}&rdquo;
+                </blockquote>
+              </div>
+
+              <div className="flex items-center gap-2 mt-2">
+                <svg className="text-[#22C55E] flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <p className="text-[#1E293B] text-sm font-semibold">{story.outcome}</p>
+              </div>
+            </div>
+          </div>
+        </FadeUp>
+
+        {/* Navigation */}
+        <FadeUp delay={0.15} className="flex items-center justify-center gap-6 mt-8">
+          <button
+            onClick={() => setActive((active - 1 + stories.length) % stories.length)}
+            className="w-11 h-11 rounded-full bg-white border border-[#E2E8F0] flex items-center justify-center shadow-sm hover:shadow-md transition-all"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+
+          <div className="flex items-center gap-2">
+            {stories.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                className="rounded-full transition-all"
+                style={{
+                  width: i === active ? 10 : 8,
+                  height: i === active ? 10 : 8,
+                  background: i === active ? "#E85D26" : "#CBD5E1",
+                }}
+              />
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Final CTA section */}
-      <section id="consult" className="bg-deep-section py-20 lg:py-28">
-        <div className="max-w-3xl mx-auto px-5 text-center">
-          <FadeUp>
-            <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-5">
-              Ready to start?
-            </p>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Solve your visa and your career in one conversation.
-            </h2>
-            <p className="text-white/60 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
-              Book a free 20-minute consultation with an admissions advisor. We'll look at your situation, explain your options, and tell you honestly if Facultet is the right fit.
-            </p>
-          </FadeUp>
-
-          <FadeUp delay={0.1}>
-            <div className="grid sm:grid-cols-3 gap-4 mb-10 text-left">
-              {[
-                { title: "Residency assessment", desc: "We'll tell you which visa route fits your timeline" },
-                { title: "Program match", desc: "Find the right program for your background and goals" },
-                { title: "Honest advice", desc: "No pressure. No sales scripts. Just real information." },
-              ].map(({ title, desc }) => (
-                <div key={title} className="bg-white/5 border border-white/10 rounded-xl p-5">
-                  <p className="font-semibold text-white text-sm mb-1">{title}</p>
-                  <p className="text-white/50 text-xs leading-relaxed">{desc}</p>
-                </div>
-              ))}
-            </div>
-          </FadeUp>
-
-          <FadeUp delay={0.2}>
-            <form
-              action="#consult"
-              method="post"
-              className="bg-white rounded-2xl p-7 sm:p-10 text-left"
-            >
-              <h3 className="font-semibold text-brand text-xl mb-6">
-                Book your free consultation
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">
-                    Your name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Maria"
-                    required
-                    className="w-full border border-gray-200 rounded-lg px-4 py-3 text-brand text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent placeholder:text-slate-300"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">
-                    Email address
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="maria@example.com"
-                    required
-                    className="w-full border border-gray-200 rounded-lg px-4 py-3 text-brand text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent placeholder:text-slate-300"
-                  />
-                </div>
-              </div>
-              <div className="mb-6">
-                <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">
-                  Which program interests you?
-                </label>
-                <select
-                  className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent text-brand bg-white"
-                  defaultValue=""
-                >
-                  <option value="" disabled>Select a program…</option>
-                  <option>UX / UI Design</option>
-                  <option>Digital Marketing</option>
-                  <option>Frontend Development</option>
-                  <option>Graphic Design & Motion</option>
-                  <option>Not sure yet — need advice</option>
-                </select>
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-accent hover:bg-accent-hover text-white font-semibold text-base py-4 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/30"
-              >
-                Book My Free Consultation →
-              </button>
-              <p className="text-center text-slate-400 text-xs mt-4">
-                Free · No commitment · We respond within 2 hours · 100% confidential
-              </p>
-            </form>
-          </FadeUp>
-
-          <p className="text-white/25 text-xs mt-8">
-            Facultet School · Licensed by the Ministry of Education, Portugal · License #2847-DEP/2019 ·{" "}
-            Campuses in Lisbon (Baixa) and Porto (Aliados)
-          </p>
-        </div>
-      </section>
-
-      {/* Minimal footer */}
-      <footer className="bg-brand-deep border-t border-white/5 py-6">
-        <div className="max-w-6xl mx-auto px-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span className="font-display text-white/40 text-sm tracking-widest uppercase">
-            Facultet School
-          </span>
-          <div className="flex gap-6 text-white/25 text-xs">
-            <a href="#" className="hover:text-white/50 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white/50 transition-colors">Terms</a>
-            <a href="#" className="hover:text-white/50 transition-colors">Contact</a>
-          </div>
-        </div>
-      </footer>
-    </>
+          <button
+            onClick={() => setActive((active + 1) % stories.length)}
+            className="w-11 h-11 rounded-full bg-accent flex items-center justify-center shadow-[0_2px_8px_rgba(232,93,38,0.30)] hover:bg-accent-hover transition-all"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+        </FadeUp>
+      </div>
+    </section>
   );
 }

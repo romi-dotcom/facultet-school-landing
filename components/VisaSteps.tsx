@@ -2,136 +2,137 @@ import FadeUp from "./FadeUp";
 
 const steps = [
   {
-    step: "01",
-    title: "Apply online",
-    timeline: "5 minutes",
-    description: "Fill out our short program application. No documents needed yet — just your name, email, and the program you're interested in.",
+    num: "01",
+    title: "Enrol at Facultet",
+    desc: "Apply online and sign the enrolment agreement. No immigration documents needed from you at this stage.",
   },
   {
-    step: "02",
-    title: "Get your acceptance",
-    timeline: "Within 48 hours",
-    description: "An admissions advisor reviews your application and sends your acceptance letter and enrollment agreement to sign.",
-  },
-  {
-    step: "03",
+    num: "02",
     title: "Receive your documents",
-    timeline: "Within 14 days",
-    description: "After your first tuition payment, we prepare your full AIMA-compliant documentation package: enrollment letter, program schedule, and supporting materials.",
+    desc: "We issue the official enrolment certificate accepted by AIMA — ready in 5 business days.",
   },
   {
-    step: "04",
-    title: "Submit to AIMA",
-    timeline: "You control the timeline",
-    description: "Submit your student residence permit (D4) application to AIMA. Our documentation advisor is available throughout the process.",
+    num: "03",
+    title: "Book your AIMA appointment",
+    desc: "Submit the renewal application with our document package. We prepare a full checklist so nothing is missing.",
   },
   {
-    step: "05",
-    title: "Start studying",
-    timeline: "Next cohort: September",
-    description: "While your permit is being processed, you can attend classes. Most students receive their permit within 6–10 weeks of submission.",
+    num: "04",
+    title: "Get your renewed permit",
+    desc: "AIMA processes and renews your student residence permit. 100% acceptance rate with our documentation.",
   },
 ];
 
 export default function VisaSteps() {
   return (
-    <section id="visa-steps" className="bg-white py-20 lg:py-28">
-      <div className="max-w-6xl mx-auto px-5">
-        <FadeUp className="text-center mb-16">
-          <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
-            The visa process
-          </p>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-brand leading-tight">
-            From application to{" "}
-            <span className="text-accent">residence permit</span>
-            <br />in 5 steps
+    <section id="visa-steps" className="bg-[#F7F5F2] py-20 lg:py-24">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-[160px]">
+
+        {/* Header */}
+        <FadeUp className="text-center mb-10">
+          <p className="text-[#E86339] text-[11px] font-semibold tracking-[2px] uppercase mb-4">HOW IT WORKS</p>
+          <h2 className="text-[#1A1A2E] text-[40px] font-bold leading-[1.15] max-w-[800px] mx-auto">
+            Renew your student permit —<br className="hidden sm:block" />
+            without leaving Portugal
           </h2>
-          <p className="text-text-secondary mt-4 text-lg max-w-xl mx-auto">
-            Our admissions team has walked this process with over 2,000 students. We know exactly what AIMA needs.
+          <p className="text-[#64748B] text-[17px] leading-[1.5] mt-5 max-w-[720px] mx-auto">
+            Stay enrolled at a DGERT-licensed school — AIMA renews your student residence permit every year. We issue the documents you need.
           </p>
         </FadeUp>
 
-        {/* Split layout: steps list left + reassurance right */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+        {/* Stats row */}
+        <FadeUp delay={0.05} className="mb-12">
+          <div className="flex items-center justify-center flex-wrap gap-0 max-w-[1120px] mx-auto border border-[#E2E8F0] rounded-xl overflow-hidden bg-white">
+            {[
+              { val: "200+", lbl: "Students supported" },
+              { val: "5", lbl: "Business days for documents" },
+              { val: "100%", lbl: "Documents accepted by AIMA" },
+            ].map(({ val, lbl }, i) => (
+              <div
+                key={val}
+                className="flex flex-col items-center gap-1.5 py-5 px-6 flex-1 min-w-[160px]"
+                style={{ borderRight: i < 2 ? "1px solid #E2E0DC" : undefined }}
+              >
+                <span className="text-[#1A1A2E] text-[36px] font-bold leading-none">{val}</span>
+                <span className="text-[#64748B] text-sm text-center leading-tight max-w-[140px]">{lbl}</span>
+              </div>
+            ))}
+          </div>
+        </FadeUp>
+
+        {/* Body: steps + right column */}
+        <div className="flex flex-col lg:flex-row gap-16 max-w-[1120px] mx-auto">
+
           {/* Left: steps */}
-          <FadeUp delay={0.1}>
-            <div className="space-y-0 divide-y divide-border">
-              {steps.map(({ step, title, timeline, description }) => (
-                <div key={step} className="flex gap-6 py-7 first:pt-0">
-                  {/* Big step number */}
-                  <div className="flex-shrink-0 w-14">
-                    <span className="font-display text-5xl font-bold text-brand/10 leading-none">
-                      {step}
-                    </span>
-                  </div>
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-1.5 flex-wrap">
-                      <h3 className="font-bold text-brand text-lg">{title}</h3>
-                      <span className="text-xs font-semibold text-accent bg-orange-50 px-2.5 py-0.5 rounded-full">
-                        {timeline}
-                      </span>
+          <FadeUp delay={0.1} className="flex-1">
+            <div className="flex flex-col">
+              {steps.map(({ num, title, desc }, i) => (
+                <div
+                  key={num}
+                  className="flex gap-4 pb-5"
+                  style={{ paddingBottom: i < steps.length - 1 ? 20 : 0 }}
+                >
+                  <div className="flex flex-col items-center gap-1">
+                    <div className="w-9 h-9 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                      <span className="text-white text-sm font-bold">{num}</span>
                     </div>
-                    <p className="text-text-secondary text-sm leading-relaxed">
-                      {description}
-                    </p>
+                    {i < steps.length - 1 && (
+                      <div className="w-px flex-1 min-h-[24px] bg-[#E2E8F0]" />
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-1 pt-1 pb-2">
+                    <h3 className="text-[#1A1A2E] text-base font-semibold">{title}</h3>
+                    <p className="text-[#64748B] text-sm leading-relaxed">{desc}</p>
                   </div>
                 </div>
               ))}
             </div>
           </FadeUp>
 
-          {/* Right: sticky reassurance card */}
-          <FadeUp delay={0.2}>
-            <div className="lg:sticky lg:top-24 space-y-5">
-              {/* Approval rate card */}
-              <div className="bg-brand rounded-2xl p-8 text-white">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    </svg>
+          {/* Right: urgency + trust boxes */}
+          <FadeUp delay={0.15} className="lg:w-[480px]">
+            <div className="flex flex-col gap-8">
+              {/* Urgency bar */}
+              <div
+                className="p-5 rounded-lg"
+                style={{ background: "#FFFBEB", borderLeft: "3px solid #F59E0B" }}
+              >
+                <div className="flex items-start gap-3">
+                  <svg className="text-[#F59E0B] w-5 h-5 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                  </svg>
+                  <div>
+                    <p className="text-[#92400E] font-semibold text-sm">Don&apos;t wait too long</p>
+                    <p className="text-[#92400E]/80 text-sm mt-1 leading-relaxed">
+                      AIMA appointment slots fill up fast. Start the process 60–90 days before your permit expires. We&apos;ll remind you and prepare everything in advance.
+                    </p>
                   </div>
-                  <p className="font-semibold text-white/80 text-sm leading-snug">
-                    AIMA-compliant documentation
-                  </p>
                 </div>
-                <p className="font-display text-6xl font-bold text-white mb-2">94%</p>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Student visa approval rate across all Facultet applications. Every documentation package is reviewed by our compliance team before it leaves our hands.
-                </p>
               </div>
 
-              {/* Timeline card */}
-              <div className="bg-warm rounded-2xl p-7 border border-warm-dark">
-                <p className="font-bold text-brand text-lg mb-4">Typical timeline</p>
-                <div className="space-y-3">
+              {/* Trust box */}
+              <div
+                className="bg-white p-6 rounded-lg"
+                style={{ border: "1px solid #E2E0DC", borderLeft: "3px solid #E2E0DC" }}
+              >
+                <p className="text-[#1A1A2E] font-semibold text-sm mb-3">Why our documents are accepted</p>
+                <div className="flex flex-col gap-2.5">
                   {[
-                    { label: "Enrollment letter", time: "14 days" },
-                    { label: "AIMA processing", time: "6–10 weeks" },
-                    { label: "Permit in hand", time: "~3 months total" },
-                  ].map(({ label, time }) => (
-                    <div key={label} className="flex items-center justify-between">
-                      <span className="text-text-secondary text-sm">{label}</span>
-                      <span className="font-bold text-brand text-sm">{time}</span>
+                    "DGERT-certified institution registered with AIMA",
+                    "Enrolment certificates follow AIMA's exact requirements",
+                    "We prepare the full document checklist, not just the letter",
+                    "Dedicated support until your permit is renewed",
+                  ].map((t) => (
+                    <div key={t} className="flex items-start gap-2">
+                      <svg className="text-accent w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                      </svg>
+                      <p className="text-[#475569] text-sm leading-snug">{t}</p>
                     </div>
                   ))}
                 </div>
-                <div className="mt-5 pt-5 border-t border-warm-dark">
-                  <a
-                    href="#consult"
-                    className="block w-full text-center bg-accent hover:bg-accent-hover text-white font-semibold py-3.5 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/25 text-sm"
-                  >
-                    Start My Application →
-                  </a>
-                </div>
               </div>
-
-              {/* Guarantee note */}
-              <p className="text-text-muted text-xs text-center leading-relaxed px-2">
-                If your application is rejected, we appeal and re-apply at no extra charge.
-                60% refund after two failed attempts.
-              </p>
             </div>
           </FadeUp>
         </div>

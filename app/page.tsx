@@ -1,33 +1,3 @@
-/*
- * FACULTET SCHOOL — HIGH-CONVERSION LANDING PAGE
- *
- * MESSAGE MAP
- * H1: "Your Visa Problem Has an Education Solution"
- * Sub: Licensed 14-month programs in Lisbon & Porto —
- *      student residence permit + European certificate + portfolio
- *
- * SECTION FLOW & PURPOSE
- * 1. Nav            → One CTA, no exit links
- * 2. Hero           → "Am I in the right place?" → Yes.
- * 3. TrustBar       → "Can I trust this?" → 2,147 graduates, licensed, 4.9/5
- * 4. AudienceSelect → "Is this for me?" → Two specific personas
- * 5. PainAgitation  → "Do they understand my pain?" → Deeply
- * 6. DoubleValue    → "What do I actually get?" → Two problems, one enrollment
- * 7. Programmes     → "What are my options?" → 4 programs
- * 8. VisaSteps      → "Is the process complicated?" → No, 4 steps
- * 9. VisaFaq        → Pre-empt every objection
- * 10. Testimonials  → "Has it worked for people like me?" → Yes
- * 11. SuccessStories → "What happens after?" → Stats + final CTA
- *
- * PRIMARY CTA: "Book My Free Consultation" (Hero + post-testimonials + final)
- * OBJECTIONS HANDLED:
- *   "Is this legit?" → TrustBar + FAQ #1 (Ministry license)
- *   "Is this for me?" → AudienceSelect
- *   "How does the visa work?" → VisaSteps + FAQ
- *   "What if it fails?" → FAQ #6 (refund policy)
- *   "Can I afford it?" → FAQ #5 (monthly installments from €380)
- */
-
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
@@ -36,9 +6,12 @@ import PainAgitation from "@/components/PainAgitation";
 import DoubleValue from "@/components/DoubleValue";
 import Programmes from "@/components/Programmes";
 import VisaSteps from "@/components/VisaSteps";
+import HowToApply from "@/components/HowToApply";
+import CTAStrip from "@/components/CTAStrip";
 import VisaFaq from "@/components/VisaFaq";
-import Testimonials from "@/components/Testimonials";
 import SuccessStories from "@/components/SuccessStories";
+import Testimonials from "@/components/Testimonials";
+import ApplicationForm from "@/components/ApplicationForm";
 
 export default function Home() {
   return (
@@ -52,18 +25,31 @@ export default function Home() {
         <DoubleValue />
         <Programmes />
         <VisaSteps />
-        <Testimonials />
+        <HowToApply />
+        <CTAStrip
+          heading="Ready to start? Apply in 2 minutes"
+          sub="Takes 2 minutes · No commitment · Response within 2 business hours"
+          btnText="Book a free consultation →"
+        />
         <VisaFaq />
         <SuccessStories />
+        <Testimonials />
+        <CTAStrip
+          heading="Join Maria, Arjun, and 420 other students who chose Facultet."
+          sub="No documents needed to apply · Response within 1 business day"
+          btnText="Get My Free Consultation"
+          trust="No documents needed to apply · Response within 1 business day"
+        />
+        <ApplicationForm />
       </main>
 
-      {/* Mobile sticky CTA — visible only on small screens */}
+      {/* Mobile sticky CTA */}
       <div className="fixed bottom-0 inset-x-0 z-40 bg-white border-t border-gray-200 shadow-lg p-4 sm:hidden">
         <a
           href="#consult"
-          className="block w-full text-center bg-accent hover:bg-accent-hover text-white font-semibold py-3.5 rounded-xl transition-colors text-base"
+          className="block w-full text-center bg-accent hover:bg-accent-hover text-white font-bold py-3.5 rounded-xl transition-colors text-base"
         >
-          Book My Free Consultation
+          Apply Now →
         </a>
       </div>
     </>

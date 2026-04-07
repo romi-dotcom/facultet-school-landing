@@ -1,129 +1,97 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import FadeUp from "./FadeUp";
 
-interface FaqItem {
-  q: string;
-  a: string;
-}
-
-const faqs: FaqItem[] = [
+const faqs = [
   {
-    q: "Is Facultet officially recognized for student visa (D4) purposes?",
-    a: "Yes. Facultet is licensed by the Portuguese Ministry of Education — License #2847-DEP/2019. This license is what allows our enrollment letter to be accepted by AIMA (the Agency for Integration, Migration and Asylum) as supporting documentation for a student residence permit. You can verify our license on the Ministry of Education's public registry.",
+    q: "Is Facultet a real licensed school?",
+    a: "Yes. Facultet is licensed by DGERT and registered with AIMA (formerly SEF). Our enrolment certificates are legally valid documents for your annual student residence permit renewal through AIMA.",
   },
   {
-    q: "How quickly can I receive my enrollment documents?",
-    a: "Your full documentation package — enrollment letter, program confirmation, and all AIMA-required materials — is ready within 14 calendar days of your first tuition payment. We have a dedicated documentation team that prepares these packages daily.",
+    q: "How far in advance should I start the renewal process?",
+    a: "We recommend starting 60–90 days before your permit expires. AIMA appointment availability varies — earlier is always safer. We will remind you when the time comes and prepare your renewal documents well in advance.",
   },
   {
-    q: "Can I work while studying at Facultet?",
-    a: "Yes. A student residence permit in Portugal allows you to work up to 20 hours per week during term time, and full-time during academic breaks. Many of our students begin working in their field before they even graduate.",
+    q: "What documents does AIMA require for renewal?",
+    a: "AIMA requires proof of active enrolment at a DGERT-licensed institution. We prepare the official enrolment confirmation for you — ready in 2 business days. We also send you the complete checklist of supporting documents so nothing is missing on the day of your appointment.",
   },
   {
-    q: "Are classes in English? Do I need to speak Portuguese?",
-    a: "All programs are delivered in English, with course materials also available in Russian. You do not need to speak Portuguese to study at Facultet. We do offer optional Portuguese language integration workshops, but they are not a requirement.",
-  },
-  {
-    q: "What does the program cost, and are there payment options?",
-    a: "Programs range from €3,800 to €5,200 depending on the program and campus. All programs offer a monthly installment plan — starting from €380/month — so you're not required to pay everything upfront. Book a free consultation and we'll give you the exact breakdown for your chosen program.",
-  },
-  {
-    q: "What if I don't get approved for a residence permit?",
-    a: "Our approval rate is 94%. If your application is rejected, our team reviews the rejection letter and helps you appeal or re-apply — at no additional cost. If after two attempts you are still unsuccessful, we offer a 60% tuition refund on your remaining program balance. We stand behind our process.",
-  },
-  {
-    q: "Can my spouse or family apply for a dependent visa?",
-    a: "Yes. Once you receive your student residence permit, your spouse and children can apply for a family reunification permit (dependent residence). Facultet's documentation team can provide guidance on this process during your enrollment.",
-  },
-  {
-    q: "Do I need to attend classes in person, or can I study remotely?",
-    a: "Our programs are designed as hybrid: the majority of instruction is in-person at our Lisbon or Porto campus (which matters for the visa documentation), with some theoretical modules available online. Full remote enrollment is not available, as in-person attendance is required for the student residence permit documentation to be valid.",
+    q: "What if my permit expires before I can get an AIMA appointment?",
+    a: "If you have submitted a renewal application before your permit expired, you are legally allowed to remain in Portugal while AIMA processes it — AIMA issues a 'manifestação de interesse' confirmation. Start the process early and our team will guide you through every step.",
   },
 ];
 
 export default function VisaFaq() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
+  const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="bg-warm py-20 lg:py-28">
-      <div className="max-w-3xl mx-auto px-5">
-        <FadeUp className="text-center mb-14">
-          <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
-            Your questions, answered
-          </p>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-brand leading-tight">
-            Everything you need
-            <br />
-            to know before enrolling
-          </h2>
-        </FadeUp>
+    <section id="faq" className="bg-white py-20 lg:py-24">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-[160px]">
+        <div className="flex flex-col lg:flex-row gap-20 items-start">
 
-        <FadeUp delay={0.1}>
-          <div className="divide-y divide-warm-dark">
-            {faqs.map(({ q, a }, i) => {
-              const isOpen = openIndex === i;
-              return (
-                <div key={i} className="py-1">
+          {/* Left */}
+          <FadeUp className="lg:w-[370px] flex-shrink-0 flex flex-col gap-5">
+            <div className="w-16 h-16 rounded-2xl bg-[#FFF7ED] flex items-center justify-center">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#E85D26" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+
+            <h2 className="text-[#1E293B] text-[36px] font-bold leading-[1.2]">
+              Permit Renewal Questions & Answers
+            </h2>
+
+            <p className="text-[#64748B] text-base leading-[1.6]">
+              Everything you need to know about the student permit renewal process through Facultet.
+            </p>
+
+            <div
+              className="flex items-center gap-2.5 px-[18px] py-3.5 rounded-[10px] border border-[#BBF7D0] bg-[#F0FDF4] self-start"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+              <span className="text-[#16A34A] text-sm font-semibold">DGERT-licensed institution</span>
+            </div>
+          </FadeUp>
+
+          {/* Right — accordion */}
+          <FadeUp delay={0.1} className="flex-1">
+            <div
+              className="rounded-2xl overflow-hidden border border-[#E2E8F0] shadow-[0_2px_12px_rgba(15,23,42,0.05)]"
+            >
+              {faqs.map(({ q, a }, i) => (
+                <div key={q} className={i < faqs.length - 1 ? "border-b border-[#F1F5F9]" : ""}>
+                  {/* Question row */}
                   <button
-                    onClick={() => toggle(i)}
-                    className="w-full text-left py-5 flex items-start justify-between gap-4 group"
-                    aria-expanded={isOpen}
+                    onClick={() => setOpen(open === i ? null : i)}
+                    className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-[#FAFBFC] transition-colors"
                   >
-                    <span className="font-semibold text-brand text-base leading-snug group-hover:text-accent transition-colors pr-2">
+                    <span className="text-[#1E293B] text-[15px] font-semibold leading-snug">
                       {q}
                     </span>
-                    <motion.span
-                      animate={{ rotate: isOpen ? 45 : 0 }}
-                      transition={{ duration: 0.25, ease: "easeInOut" }}
-                      className="flex-shrink-0 w-6 h-6 rounded-full bg-white border border-warm-dark flex items-center justify-center text-brand text-sm font-light mt-0.5"
+                    <svg
+                      className="text-[#94A3B8] flex-shrink-0 transition-transform duration-200"
+                      style={{ transform: open === i ? "rotate(180deg)" : "rotate(0deg)" }}
+                      width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                     >
-                      +
-                    </motion.span>
+                      <polyline points="6 9 12 15 18 9"/>
+                    </svg>
                   </button>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="answer"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                        style={{ overflow: "hidden" }}
-                      >
-                        <div className="pb-5 pr-10">
-                          <p className="text-slate-500 text-base leading-relaxed">{a}</p>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {/* Answer */}
+                  {open === i && (
+                    <div className="px-6 pb-5 bg-[#FAFBFC] border-t border-[#F1F5F9]">
+                      <p className="text-[#64748B] text-sm leading-[1.7] pt-2.5">{a}</p>
+                    </div>
+                  )}
                 </div>
-              );
-            })}
-          </div>
-        </FadeUp>
-
-        <FadeUp delay={0.2} className="mt-12">
-          <div className="text-center bg-white rounded-2xl border border-warm-dark p-7">
-            <p className="text-brand font-semibold text-lg mb-2">
-              Didn't find what you were looking for?
-            </p>
-            <p className="text-slate-500 text-sm mb-5">
-              Book a free 20-minute consultation with an admissions advisor. No pressure, no sales pitch — just answers.
-            </p>
-            <a
-              href="#consult"
-              className="inline-block bg-accent hover:bg-accent-hover text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors"
-            >
-              Ask My Question
-            </a>
-          </div>
-        </FadeUp>
+              ))}
+            </div>
+          </FadeUp>
+        </div>
       </div>
     </section>
   );

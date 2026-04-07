@@ -1,116 +1,109 @@
 import FadeUp from "./FadeUp";
 
-const values = [
-  {
-    tag: "Legal Residency",
-    headline: "A legal path to staying in Portugal",
-    description:
-      "Your enrollment at Facultet generates an AIMA-compliant letter that qualifies you to apply for a student residence permit (D4 visa). Our 94% approval rate isn't an accident — our documentation package is built specifically for immigration success.",
-    bullets: [
-      "Enrollment letter ready in 14 calendar days",
-      "Full documentation package included",
-      "Legal status while you build your career",
-      "Permit renewed for the program duration",
-    ],
-    dark: false,
-  },
-  {
-    tag: "European Career",
-    headline: "Credentials that actually open doors",
-    description:
-      "Our programs are recognized by Portuguese employers because they're built with them. You don't just get a certificate — you graduate with a real portfolio that you built during the program, working on actual briefs.",
-    bullets: [
-      "Portuguese Ministry of Education certificate",
-      "Portfolio of 4–6 real projects",
-      "Career placement support for 6 months post-graduation",
-      "Alumni network in Lisbon & Porto",
-    ],
-    dark: true,
-  },
+const leftItems = [
+  { title: "Stay legally in Portugal", desc: "AIMA-accepted enrolment certificate issued within 5 business days." },
+  { title: "Annual permit renewal", desc: "We renew your documents every year for the programme duration." },
+  { title: "Licensed institution", desc: "DGERT-certified. Recognised by the Ministry of Education." },
+  { title: "Real campus, real classes", desc: "Evening schedule. Lisbon & Porto. No visa factories." },
+];
+
+const rightItems = [
+  { title: "European certificate", desc: "Issued by a Portuguese licensed school. Recognised by local employers." },
+  { title: "Real portfolio", desc: "Graduate with 4–6 real projects built during the programme." },
+  { title: "Career support 6 months", desc: "Placement assistance and alumni network in Lisbon & Porto." },
+  { title: "78% employed in field", desc: "Within 6 months of graduating, based on our 2024 cohort data." },
+];
+
+const strip = [
+  { value: "DGERT", label: "Licensed institution" },
+  { value: "5 days", label: "Document turnaround" },
+  { value: "423+", label: "Students enrolled" },
 ];
 
 export default function DoubleValue() {
   return (
-    <section className="bg-white py-20 lg:py-28">
-      <div className="max-w-6xl mx-auto px-5">
-        <FadeUp className="text-center mb-14">
-          <p className="text-accent font-semibold text-sm uppercase tracking-widest mb-3">
-            The Facultet difference
+    <section id="double-value" className="bg-[#F8FAFC] py-20 lg:py-24">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-[160px]">
+        <FadeUp className="text-center mb-12">
+          <p className="text-accent text-[11px] font-bold tracking-[2px] uppercase mb-5">
+            WHY FACULTET
           </p>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-brand leading-tight">
-            One enrollment.
-            <br />
-            Two transformations.
+          <h2 className="text-[#1E293B] text-[36px] font-bold leading-[1.2] max-w-2xl mx-auto">
+            One decision. Two problems solved.
           </h2>
-          <p className="text-slate-500 mt-4 text-lg max-w-2xl mx-auto">
-            No other licensed school in Portugal gives you both simultaneously. This is the only program that solves your visa problem while building your career.
+          <p className="text-[#64748B] text-base mt-5 max-w-2xl mx-auto leading-relaxed">
+            No formal enrolment gives you a career. No online course helps you keep your status. We do both — in one evening programme.
           </p>
         </FadeUp>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {values.map(({ tag, headline, description, bullets, dark }, i) => (
-            <FadeUp key={tag} delay={i * 0.1}>
-              <div
-                className={`h-full rounded-2xl border p-8 lg:p-10 ${
-                  dark
-                    ? "bg-brand border-brand text-white"
-                    : "bg-warm border-warm-dark text-brand"
-                }`}
-              >
-                <span
-                  className={`inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-6 ${
-                    dark ? "bg-white/15 text-white" : "bg-white text-accent"
-                  }`}
-                >
-                  {tag}
-                </span>
-                <h3
-                  className={`font-display text-2xl sm:text-3xl font-semibold leading-snug mb-4 ${
-                    dark ? "text-white" : "text-brand"
-                  }`}
-                >
-                  {headline}
-                </h3>
-                <p
-                  className={`text-base leading-relaxed mb-7 ${
-                    dark ? "text-white/70" : "text-slate-500"
-                  }`}
-                >
-                  {description}
-                </p>
-                <ul className="space-y-3">
-                  {bullets.map((bullet) => (
-                    <li key={bullet} className="flex items-start gap-3">
-                      <span
-                        className={`mt-0.5 flex-shrink-0 font-bold ${
-                          dark ? "text-accent" : "text-emerald-500"
-                        }`}
-                      >
-                        ✓
-                      </span>
-                      <span
-                        className={`text-sm ${dark ? "text-white/80" : "text-slate-600"}`}
-                      >
-                        {bullet}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+        {/* Two columns */}
+        <FadeUp delay={0.1}>
+          <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[#E2E8F0] bg-white rounded-xl overflow-hidden shadow-sm border border-[#E2E8F0]">
+            {/* Left — Visa */}
+            <div className="p-10 lg:p-[60px] flex flex-col gap-6">
+              <h3 className="text-[#1E293B] text-xl font-bold">Residency Path</h3>
+              <div className="flex flex-col gap-5">
+                {leftItems.map(({ title, desc }) => (
+                  <div key={title} className="flex items-start gap-3">
+                    <svg className="text-accent mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <div>
+                      <p className="text-[#1E293B] text-sm font-semibold">{title}</p>
+                      <p className="text-[#64748B] text-sm leading-relaxed">{desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </FadeUp>
-          ))}
-        </div>
+            </div>
 
-        <FadeUp delay={0.2} className="mt-14 text-center">
+            {/* Right — Career */}
+            <div className="p-10 lg:p-[60px] flex flex-col gap-6">
+              <h3 className="text-[#1E293B] text-xl font-bold">Career Path</h3>
+              <div className="flex flex-col gap-5">
+                {rightItems.map(({ title, desc }) => (
+                  <div key={title} className="flex items-start gap-3">
+                    <svg className="text-accent mt-0.5 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <div>
+                      <p className="text-[#1E293B] text-sm font-semibold">{title}</p>
+                      <p className="text-[#64748B] text-sm leading-relaxed">{desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </FadeUp>
+
+        {/* CTA */}
+        <FadeUp delay={0.2} className="flex flex-col items-center gap-3 mt-10">
           <a
             href="#consult"
-            className="inline-block bg-accent hover:bg-accent-hover text-white font-semibold text-base px-8 py-4 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/25"
+            className="inline-flex items-center bg-accent hover:bg-accent-hover text-white font-bold px-9 py-3.5 rounded-lg transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/25"
           >
             Book My Free Consultation
           </a>
-          <p className="text-slate-400 text-sm mt-3">
-            Free · No commitment · We respond within 2 hours
-          </p>
+          <p className="text-[#94A3B8] text-sm">Takes 2 minutes · No commitment</p>
+        </FadeUp>
+
+        {/* Stats strip */}
+        <FadeUp delay={0.25} className="mt-10">
+          <div
+            className="rounded-xl flex items-center justify-around py-8 px-6 flex-wrap gap-6"
+            style={{ background: "#1A1A2E" }}
+          >
+            {strip.flatMap(({ value, label }, i) => [
+              <div key={value} className="flex flex-col items-center gap-1">
+                <span className="text-white text-2xl font-bold">{value}</span>
+                <span className="text-[#94A3B8] text-xs">{label}</span>
+              </div>,
+              ...(i < strip.length - 1
+                ? [<div key={`d${i}`} className="hidden sm:block w-px h-9 bg-white/10" />]
+                : []),
+            ])}
+          </div>
         </FadeUp>
       </div>
     </section>

@@ -3,70 +3,98 @@
 import { motion, type Transition } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-
 const item = (delay: number) => ({
-  initial: { opacity: 0, y: 32 },
+  initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, ease, delay } as Transition,
+  transition: { duration: 0.6, ease, delay } as Transition,
 });
 
 export default function Hero() {
   return (
-    <section className="relative bg-brand min-h-screen flex items-center overflow-hidden pt-16">
-      {/* Background accent glow */}
-      <div
-        aria-hidden
-        className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full opacity-10"
-        style={{ background: "radial-gradient(circle, #E85D2F 0%, transparent 70%)" }}
-      />
-      <div
-        aria-hidden
-        className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-5"
-        style={{ background: "radial-gradient(circle, #ffffff 0%, transparent 70%)" }}
-      />
+    <section className="bg-[#F8FAFC] pt-[100px] sm:pt-[136px]">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-[160px] py-[80px] lg:py-[100px]">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
 
-      <div className="relative max-w-6xl mx-auto px-5 py-20 lg:py-28 w-full">
-        <div className="max-w-3xl">
-          {/* Pre-headline badge */}
-          <motion.div {...item(0)} className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-8">
-            <span className="w-2 h-2 rounded-full bg-accent inline-block" />
-            <span className="text-white/80 text-sm tracking-wide">
-              Licensed by the Ministry of Education, Portugal
-            </span>
-          </motion.div>
+          {/* Left column */}
+          <div className="flex flex-col gap-6 lg:w-1/2 w-full">
+            {/* Label */}
+            <motion.p {...item(0)} className="text-accent text-[11px] font-bold tracking-[2px] uppercase">
+              STUDY IN PORTUGAL · LICENSED INSTITUTION
+            </motion.p>
 
-          {/* H1 */}
-          <motion.h1 {...item(0.1)} className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-6">
-            Your Visa Problem
-            <br />
-            <span className="text-accent">Has an Education</span>
-            <br />
-            Solution.
-          </motion.h1>
+            {/* H1 */}
+            <motion.h1 {...item(0.1)} className="text-[#1E293B] text-[40px] sm:text-[44px] font-bold leading-[1.15] tracking-tight">
+              Keep your student permit.<br />
+              Build your European career.
+            </motion.h1>
 
-          {/* Subheadline */}
-          <motion.p {...item(0.2)} className="text-lg sm:text-xl text-white/75 leading-relaxed max-w-2xl mb-10">
-            A licensed 14-month evening program in Lisbon or Porto — gives you
-            a{" "}
-            <span className="text-white font-medium">student residence permit</span>,
-            a{" "}
-            <span className="text-white font-medium">European certificate</span>, and a{" "}
-            <span className="text-white font-medium">real digital portfolio</span>.
-            One enrollment. Two life-changing outcomes.
-          </motion.p>
+            {/* Subtitle */}
+            <motion.p {...item(0.2)} className="text-[#64748B] text-base leading-[1.6]">
+              Evening professional programmes with an official enrolment
+              certificate for your AIMA residence permit renewal.
+              DGERT-licensed. Real campus. Real results.
+            </motion.p>
 
-          {/* CTA group */}
-          <motion.div {...item(0.3)} className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <a
-              href="#consult"
-              className="inline-block bg-accent hover:bg-accent-hover text-white font-semibold text-lg px-8 py-4 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/30 min-w-[220px] text-center"
+            {/* Location pills */}
+            <motion.div {...item(0.25)} className="flex items-center gap-2">
+              <span className="flex items-center gap-1.5 bg-white border border-[#E2E8F0] rounded-full px-3.5 py-1.5 text-[#374151] text-sm">
+                <svg className="text-accent w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+                Lisbon Campus
+              </span>
+              <span className="flex items-center gap-1.5 bg-white border border-[#E2E8F0] rounded-full px-3.5 py-1.5 text-[#374151] text-sm">
+                <svg className="text-accent w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+                Porto Campus
+              </span>
+            </motion.div>
+
+            {/* CTA */}
+            <motion.div {...item(0.3)}>
+              <a
+                href="#consult"
+                className="inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white text-base font-bold px-9 py-3.5 rounded-lg transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/25"
+              >
+                Apply Now →
+              </a>
+            </motion.div>
+
+            {/* Urgency strip */}
+            <motion.div {...item(0.35)} className="flex items-center gap-2">
+              <svg className="text-[#F59E0B] w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              <span className="text-[#64748B] text-sm">
+                Most permits need renewal 60–90 days before expiry · Next intake: September 2026 · Limited spots
+              </span>
+            </motion.div>
+          </div>
+
+          {/* Right column — hero image placeholder */}
+          <motion.div
+            {...item(0.2)}
+            className="lg:w-1/2 w-full rounded-2xl overflow-hidden"
+            style={{ minHeight: 360 }}
+          >
+            <div
+              className="w-full h-full min-h-[360px] rounded-2xl"
+              style={{
+                background: "linear-gradient(135deg, #1E293B 0%, #E85D26 50%, #F59E0B 100%)",
+                opacity: 0.85,
+              }}
             >
-              Book My Free Consultation
-            </a>
-            <p className="text-white/50 text-sm">
-              Free · No commitment · Response within 2 hours
-            </p>
+              <div className="w-full h-full min-h-[360px] flex items-center justify-center">
+                <div className="text-center px-8">
+                  <p className="text-white/40 text-sm font-medium">Campus Photo</p>
+                  <p className="text-white/20 text-xs mt-1">Lisbon & Porto</p>
+                </div>
+              </div>
+            </div>
           </motion.div>
+
         </div>
       </div>
     </section>
