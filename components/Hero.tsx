@@ -57,13 +57,13 @@ export default function Hero() {
             </motion.div>
 
             {/* Urgency strip */}
-            <motion.div {...item(0.35)} className="flex items-center gap-2">
-              <svg className="text-[#F59E0B] w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <motion.div {...item(0.35)} className="flex items-start gap-2">
+              <svg className="text-[#F59E0B] w-3 h-3 flex-shrink-0 mt-[2px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
                 <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
               </svg>
-              <span className="text-[#64748B] text-sm">
-                Most permits need renewal 60–90 days before expiry
+              <span className="text-[#64748B] text-xs leading-[1.5]">
+                Most permits need renewal 60–90 days before expiry ·
                 <br />Next intake: September 2026 · Limited spots
               </span>
             </motion.div>
