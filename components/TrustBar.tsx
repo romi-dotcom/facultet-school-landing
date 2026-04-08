@@ -49,19 +49,49 @@ const signals = [
   },
 ];
 
+const Dot = () => (
+  <span className="text-[#CBD5E1] mx-3 select-none">·</span>
+);
+
 export default function TrustBar() {
   return (
-    <section className="bg-[#F8FAFC] border-y border-[#E2E8F0]">
-      <div className="max-w-[1440px] mx-auto px-5 lg:px-[160px] py-8">
+    <section className="bg-[#F8FAFC] border-y border-[#E2E8F0] overflow-hidden">
+      {/* Mobile: marquee ticker */}
+      <div className="lg:hidden py-5 relative">
+        <style>{`
+          @keyframes marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 18s linear infinite;
+          }
+          .marquee-track:hover { animation-play-state: paused; }
+        `}</style>
+        <div className="marquee-track">
+          {[...signals, ...signals].map(({ icon, label }, i) => (
+            <span key={i} className="flex items-center gap-2 whitespace-nowrap">
+              <span className="text-accent flex-shrink-0">{icon}</span>
+              <span className="text-[#1E293B] text-sm font-bold">{label}</span>
+              <Dot />
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop: static row */}
+      <div className="hidden lg:block max-w-[1440px] mx-auto px-[160px] py-8">
         <FadeUp>
-          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
+          <div className="flex items-center justify-between gap-x-6">
             {signals.flatMap(({ icon, label }, i) => [
               <div key={label} className="flex items-center gap-2">
                 <span className="text-accent flex-shrink-0">{icon}</span>
                 <span className="text-[#1E293B] text-sm font-bold">{label}</span>
               </div>,
               ...(i < signals.length - 1
-                ? [<div key={`div-${i}`} className="hidden lg:block w-px h-6 bg-[#E2E8F0]" />]
+                ? [<div key={`div-${i}`} className="w-px h-6 bg-[#E2E8F0]" />]
                 : []),
             ])}
           </div>
