@@ -23,7 +23,7 @@ const cards = [
         <polyline points="17 6 23 6 23 12"/>
       </svg>
     ),
-    title: "My CV doesn't work here",
+    title: "My CV doesn't\nwork here",
     desc: "Experience from home doesn't count. Need a European credential.",
     btnText: "View programmes",
     href: "#programmes",
@@ -71,7 +71,7 @@ export default function AudienceSelect() {
                     {icon}
                   </div>
 
-                  <h3 className="text-[#1E293B] text-[22px] font-bold leading-tight">
+                  <h3 className="text-[#1E293B] text-[22px] font-bold leading-tight whitespace-pre-line">
                     {title}
                   </h3>
 
