@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 const signals = [
@@ -52,6 +52,10 @@ const signals = [
   },
 ];
 
+// Each cycle = 5s * 1.2 pause = 6s total, item active ~15% = 0.9s
+const CYCLE = 6;
+const ACTIVE_PCT = 15;
+
 const Dot = () => <span className="text-[#CBD5E1] mx-3 select-none">·</span>;
 
 export default function TrustBar() {
@@ -60,21 +64,44 @@ export default function TrustBar() {
 
   return (
     <section className="bg-[#F8FAFC] border-y border-[#E2E8F0] overflow-hidden">
+      <style>{`
+        /* Mobile marquee */
+        @keyframes marquee {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+          display: flex;
+          width: max-content;
+          animation: marquee 18s linear infinite;
+        }
+        .marquee-track:hover { animation-play-state: paused; }
+
+        /* Desktop shimmer */
+        @keyframes shimmer-pulse {
+          0%, ${ACTIVE_PCT}%, 100% {
+            background-color: transparent;
+            box-shadow: none;
+          }
+          ${ACTIVE_PCT / 2}% {
+            background-color: rgba(232, 93, 38, 0.09);
+            box-shadow: 0 0 0 1px rgba(232, 93, 38, 0.12);
+          }
+        }
+        .shimmer-item {
+          border-radius: 8px;
+          padding: 4px 10px;
+          animation: shimmer-pulse ${CYCLE}s ease-in-out infinite;
+          transition: background-color 0.3s;
+        }
+        .shimmer-item:hover {
+          animation-play-state: paused;
+          background-color: rgba(232, 93, 38, 0.06) !important;
+        }
+      `}</style>
 
       {/* Mobile: marquee ticker */}
       <div className="lg:hidden py-5">
-        <style>{`
-          @keyframes marquee {
-            0%   { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .marquee-track {
-            display: flex;
-            width: max-content;
-            animation: marquee 18s linear infinite;
-          }
-          .marquee-track:hover { animation-play-state: paused; }
-        `}</style>
         <div className="marquee-track">
           {[...signals, ...signals].map(({ icon, label }, i) => (
             <span key={i} className="flex items-center gap-2 whitespace-nowrap">
@@ -86,30 +113,22 @@ export default function TrustBar() {
         </div>
       </div>
 
-      {/* Desktop: staggered fade-in */}
+      {/* Desktop: shimmer highlight row */}
       <div ref={desktopRef} className="hidden lg:block max-w-[1440px] mx-auto px-[160px] py-8">
-        <div className="flex items-center justify-between gap-x-6">
+        <div className="flex items-center justify-between gap-x-2">
           {signals.flatMap(({ icon, label }, i) => [
-            <motion.div
+            <div
               key={i}
-              className="flex items-center gap-2"
-              initial={{ opacity: 0, y: 12 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
+              className="shimmer-item flex items-center gap-2"
+              style={{
+                animationDelay: inView ? `${i * (CYCLE / signals.length)}s` : "9999s",
+              }}
             >
               <span className="text-accent flex-shrink-0">{icon}</span>
               <span className="text-[#1E293B] text-sm font-bold">{label}</span>
-            </motion.div>,
+            </div>,
             ...(i < signals.length - 1
-              ? [
-                  <motion.div
-                    key={`sep-${i}`}
-                    className="w-px h-6 bg-[#E2E8F0]"
-                    initial={{ opacity: 0 }}
-                    animate={inView ? { opacity: 1 } : {}}
-                    transition={{ duration: 0.4, delay: i * 0.1 + 0.05 }}
-                  />,
-                ]
+              ? [<div key={`sep-${i}`} className="w-px h-6 bg-[#E2E8F0] flex-shrink-0" />]
               : []),
           ])}
         </div>
