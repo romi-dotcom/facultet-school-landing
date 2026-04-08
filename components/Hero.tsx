@@ -17,8 +17,13 @@ export default function Hero() {
 
           {/* Left column */}
           <div className="flex flex-col gap-6 lg:w-1/2 w-full">
+            {/* Label */}
+            <motion.p {...item(0)} className="text-accent text-[11px] font-bold tracking-[2px] uppercase">
+              STUDY IN PORTUGAL · LICENSED INSTITUTION
+            </motion.p>
+
             {/* H1 */}
-            <motion.h1 {...item(0.1)} className="text-[#1E293B] text-[40px] sm:text-[44px] font-bold leading-[1.15] tracking-tight">
+            <motion.h1 {...item(0.1)} className="text-[#1E293B] text-[32px] sm:text-[40px] lg:text-[44px] font-bold leading-[1.15] tracking-tight">
               Keep your student permit.<br />
               Build your European career.
             </motion.h1>
@@ -50,7 +55,7 @@ export default function Hero() {
             <motion.div {...item(0.3)}>
               <a
                 href="#consult"
-                className="inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white text-base font-bold px-9 py-3.5 rounded-lg transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/25"
+                className="inline-flex items-center justify-center bg-accent hover:bg-accent-hover text-white text-base font-bold px-9 py-3.5 rounded-lg transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/25 w-full sm:w-auto"
               >
                 Apply Now →
               </a>

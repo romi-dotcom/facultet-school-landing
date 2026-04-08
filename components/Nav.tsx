@@ -66,12 +66,26 @@ export default function Nav() {
           </span>
         </div>
 
-        <div className="max-w-[1440px] mx-auto px-5 lg:px-10 w-full flex items-center gap-4">
+        <div className="max-w-[1440px] mx-auto px-5 lg:px-10 w-full flex items-center gap-3">
 
-          {/* LEFT: Hamburger */}
+          {/* Logo — always left */}
+          <a href="/" className="flex items-center flex-shrink-0">
+            <span className="text-brand text-xl font-bold">facultet</span>
+            <span className="text-accent text-xl font-normal">.school</span>
+          </a>
+
+          {/* CTA — center on mobile, right on desktop */}
+          <a
+            href="#consult"
+            className="flex-shrink-0 bg-accent hover:bg-accent-hover text-white text-sm font-bold px-5 sm:px-6 py-2.5 rounded-md transition-colors sm:ml-auto"
+          >
+            Apply Now →
+          </a>
+
+          {/* Hamburger — right on mobile, hidden on desktop (desktop uses drawer too) */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="flex-shrink-0 w-9 h-9 flex flex-col items-center justify-center gap-[5px] rounded-lg hover:bg-warm transition-colors"
+            className="flex-shrink-0 w-9 h-9 flex flex-col items-center justify-center gap-[5px] rounded-lg hover:bg-warm transition-colors sm:ml-0 ml-auto sm:ml-0"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
           >
@@ -91,21 +105,6 @@ export default function Nav() {
               className="block w-5 h-[1.75px] bg-brand rounded-full origin-center"
             />
           </button>
-
-          {/* CENTER: Logo */}
-          <a href="/" className="flex items-center flex-1 justify-center sm:flex-none sm:justify-start">
-            <span className="text-brand text-xl font-bold">facultet</span>
-            <span className="text-accent text-xl font-normal">.school</span>
-          </a>
-
-          {/* RIGHT: CTA */}
-          <a
-            href="#consult"
-            className="ml-auto flex-shrink-0 bg-accent hover:bg-accent-hover text-white text-sm font-bold px-5 sm:px-6 py-2.5 rounded-md transition-colors"
-          >
-            <span className="hidden sm:inline">Apply Now →</span>
-            <span className="sm:hidden">Apply →</span>
-          </a>
         </div>
       </nav>
 
