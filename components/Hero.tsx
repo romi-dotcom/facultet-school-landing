@@ -11,17 +11,12 @@ const item = (delay: number) => ({
 
 export default function Hero() {
   return (
-    <section className="bg-[#F8FAFC] pt-[100px] sm:pt-[136px]">
-      <div className="max-w-[1440px] mx-auto px-5 lg:px-[160px] py-[80px] lg:py-[100px]">
+    <section className="bg-[#F8FAFC] pt-[80px] sm:pt-[108px]">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-[160px] py-[60px] lg:py-[80px]">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
 
           {/* Left column */}
           <div className="flex flex-col gap-6 lg:w-1/2 w-full">
-            {/* Label */}
-            <motion.p {...item(0)} className="text-accent text-[11px] font-bold tracking-[2px] uppercase">
-              STUDY IN PORTUGAL · LICENSED INSTITUTION
-            </motion.p>
-
             {/* H1 */}
             <motion.h1 {...item(0.1)} className="text-[#1E293B] text-[40px] sm:text-[44px] font-bold leading-[1.15] tracking-tight">
               Keep your student permit.<br />
