@@ -69,20 +69,20 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right column — hero image placeholder */}
+          {/* Right column — hero image */}
           <motion.div
             {...item(0.2)}
-            className="lg:w-1/2 w-full rounded-2xl overflow-hidden"
-            style={{ minHeight: 360 }}
+            className="lg:w-1/2 w-full rounded-2xl overflow-hidden aspect-[16/9] lg:aspect-auto lg:min-h-[420px]"
           >
             <div
-              className="w-full h-full min-h-[360px] rounded-2xl"
+              className="w-full h-full rounded-2xl"
               style={{
                 background: "linear-gradient(135deg, #1E293B 0%, #E85D26 50%, #F59E0B 100%)",
                 opacity: 0.85,
+                minHeight: "inherit",
               }}
             >
-              <div className="w-full h-full min-h-[360px] flex items-center justify-center">
+              <div className="w-full h-full flex items-center justify-center">
                 <div className="text-center px-8">
                   <p className="text-white/40 text-sm font-medium">Campus Photo</p>
                   <p className="text-white/20 text-xs mt-1">Lisbon & Porto</p>
