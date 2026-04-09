@@ -9,6 +9,7 @@ import VisaSteps from "@/components/VisaSteps";
 import HowToApply from "@/components/HowToApply";
 import CTAStrip from "@/components/CTAStrip";
 import VisaFaq from "@/components/VisaFaq";
+import PhotoGalleryMobile from "@/components/PhotoGalleryMobile";
 import SuccessStories from "@/components/SuccessStories";
 import Testimonials from "@/components/Testimonials";
 import ApplicationForm from "@/components/ApplicationForm";
@@ -32,6 +33,7 @@ export default function Home() {
           btnText="Book a free consultation →"
         />
         <VisaFaq />
+        <PhotoGalleryMobile />
         <SuccessStories />
         <Testimonials />
         <CTAStrip
