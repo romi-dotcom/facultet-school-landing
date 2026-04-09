@@ -7,26 +7,31 @@ const photos = [
     url: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=520&q=80",
     width: 260,
     radius: 12,
+    caption: "Lisbon Classroom",
   },
   {
     url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=440&q=80",
     width: 220,
     radius: 8,
+    caption: "Porto Campus",
   },
   {
     url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=440&q=80",
     width: 220,
     radius: 8,
+    caption: "Study Hall",
   },
   {
     url: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=440&q=80",
     width: 220,
     radius: 8,
+    caption: "Faculty Meeting",
   },
   {
     url: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=440&q=80",
     width: 220,
     radius: 8,
+    caption: "Student Life",
   },
 ];
 
@@ -78,15 +83,45 @@ export default function PhotoGalleryMobile() {
         {photos.map((photo, i) => (
           <div
             key={i}
-            className="flex-shrink-0 bg-cover bg-center"
+            className="flex-shrink-0 relative overflow-hidden"
             style={{
               width: photo.width,
               height: 220,
               borderRadius: photo.radius,
               backgroundImage: `url(${photo.url})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
               scrollSnapAlign: "start",
             }}
-          />
+          >
+            {/* Caption overlay */}
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.55) 100%)",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                bottom: 12,
+                left: 12,
+                right: 12,
+              }}
+            >
+              <span
+                style={{
+                  color: "rgba(255,255,255,0.9)",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                }}
+              >
+                {photo.caption}
+              </span>
+            </div>
+          </div>
         ))}
       </div>
 
