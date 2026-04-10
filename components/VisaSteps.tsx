@@ -103,19 +103,19 @@ export default function VisaSteps() {
         </div>
 
         {/* Urgency bar */}
-        <div className="rounded-lg px-4 py-3" style={{ background: "#FFFBEB" }}>
+        <div className="rounded-lg px-4 py-3" style={{ background: "#FFFBEB", borderLeft: "3px solid #F59E0B" }}>
           <p className="text-[#92400E] leading-relaxed" style={{ fontSize: 13 }}>
-            AIMA appointments fill up weeks in advance. Most students start 60–90 days before expiry. We prepare your documents in 5 business days.
+            AIMA appointments fill up weeks in advance. Most students start the renewal process 60–90 days before their permit expires.
           </p>
         </div>
 
         {/* Trust box */}
-        <div className="rounded-lg bg-white flex flex-col gap-2 p-5">
+        <div className="rounded-xl bg-white flex flex-col gap-2 p-5" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}>
           <p className="text-[#1A1A2E] font-bold" style={{ fontSize: 14 }}>
             Does Facultet&apos;s certificate work with AIMA?
           </p>
           <p className="text-[#64748B] leading-relaxed" style={{ fontSize: 13 }}>
-            Yes. DGERT-licensed enrolment is explicitly recognised by AIMA. Every certificate we issue follows the format required for annual permit renewal.
+            Yes. DGERT-licensed enrolment is explicitly recognised by AIMA as the legal basis for annual student permit renewal. We have supported 200+ students — all documents accepted.
           </p>
         </div>
       </div>
