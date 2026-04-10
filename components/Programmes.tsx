@@ -201,7 +201,7 @@ export default function Programmes() {
 
         <div
           className="flex gap-3 overflow-x-auto pr-5 scrollbar-hide"
-          style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+          style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch", scrollPaddingLeft: "20px" }}
         >
           <div className="flex-shrink-0 w-5" aria-hidden="true" />
           {programmes.map((p, idx) => {
@@ -309,7 +309,7 @@ export default function Programmes() {
           })}
         </div>
 
-        <div className="flex flex-col items-center gap-[15px] px-5">
+        <div className="flex flex-col items-center gap-[15px] px-5 mt-4">
           <p className="text-center text-[#64748B]" style={{ fontSize: 13 }}>
             Not sure which programme to choose?
           </p>
