@@ -10,8 +10,12 @@ type Programme = {
   iconBg: string;
   iconColor: string;
   salary: string;
+  salarySource: string;
   tags: string[];
   badge?: string;
+  modules: string[];
+  whatYouBuild: string[];
+  schedule: string;
 };
 
 const programmes: Programme[] = [
@@ -23,8 +27,22 @@ const programmes: Programme[] = [
     iconBg: "#FFF7ED",
     iconColor: "#E85D26",
     salary: "€1 200–1 800/mo",
+    salarySource: "Source: Glassdoor Portugal, 2025",
     tags: ["SEO", "Google Ads", "Social Media", "Analytics"],
     badge: "Most Popular",
+    modules: [
+      "SEO & Content Strategy",
+      "Paid Advertising (Google, Meta)",
+      "Social Media Management",
+      "Analytics & Reporting",
+      "Marketing Automation",
+    ],
+    whatYouBuild: [
+      "Live ad campaigns with real budget",
+      "SEO audit + content plan for a real business",
+      "Analytics dashboard in GA4",
+    ],
+    schedule: "Mon & Wed · 19:00–21:30 · Lisbon campus + online\n13 months · Sept 2026 intake",
   },
   {
     name: "Data Analytics",
@@ -34,7 +52,21 @@ const programmes: Programme[] = [
     iconBg: "#EFF6FF",
     iconColor: "#3B82F6",
     salary: "€2 500–4 000/mo",
+    salarySource: "Source: Glassdoor Portugal, 2025",
     tags: ["Python", "SQL", "Tableau", "Power BI"],
+    modules: [
+      "Python for Data Analysis",
+      "SQL & Database Design",
+      "Data Visualisation (Tableau, Power BI)",
+      "Statistics & Machine Learning Basics",
+      "Business Intelligence & Reporting",
+    ],
+    whatYouBuild: [
+      "End-to-end data pipeline in Python",
+      "Interactive BI dashboard for a real dataset",
+      "Predictive model with documented methodology",
+    ],
+    schedule: "Tue & Thu · 19:00–21:30 · Lisbon campus + online\n14 months · Sept 2026 intake",
   },
   {
     name: "Project Management",
@@ -44,7 +76,21 @@ const programmes: Programme[] = [
     iconBg: "#F0FDF4",
     iconColor: "#16A34A",
     salary: "€2 000–3 500/mo",
+    salarySource: "Source: Glassdoor Portugal, 2025",
     tags: ["Agile", "Scrum", "Jira", "Stakeholder Mgmt"],
+    modules: [
+      "Agile & Scrum Frameworks",
+      "Project Planning & Risk Management",
+      "Stakeholder Communication",
+      "Budgeting & Resource Allocation",
+      "Tools: Jira, Notion, MS Project",
+    ],
+    whatYouBuild: [
+      "Full project plan for a real-world brief",
+      "Sprint retrospective documentation",
+      "Stakeholder presentation with risk register",
+    ],
+    schedule: "Wed & Fri · 19:00–21:30 · Porto campus + online\n13 months · Sept 2026 intake",
   },
 ];
 
@@ -123,9 +169,151 @@ function ProgrammeIcon({ name, color, size = 18 }: { name: string; color: string
   return <IconLayoutDashboard color={color} size={size} />;
 }
 
+function IconChevronUp() {
+  return (
+    <svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="18 15 12 9 6 15" />
+    </svg>
+  );
+}
+
+function ProgrammeDetailsModal({ programme, onClose }: { programme: Programme; onClose: () => void }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, []);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex flex-col bg-white"
+      style={{ overflowY: "auto" }}
+    >
+      <div className="flex flex-col gap-5 px-5 pt-8 pb-6">
+        {/* Header */}
+        <div className="flex items-center gap-3">
+          <div
+            className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-[10px]"
+            style={{ background: programme.iconBg }}
+          >
+            <ProgrammeIcon name={programme.name} color={programme.iconColor} size={22} />
+          </div>
+          <h2 className="text-[#1E293B] font-bold leading-tight" style={{ fontSize: 22 }}>
+            {programme.name}
+          </h2>
+        </div>
+
+        {/* Description */}
+        <p className="text-[#64748B] leading-[1.5]" style={{ fontSize: 14 }}>
+          {programme.desc}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2">
+          {programme.tags.map((t) => (
+            <span
+              key={t}
+              className="rounded-full bg-[#F1F5F9] px-3 py-1.5 font-semibold text-[#475569]"
+              style={{ fontSize: 12 }}
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        {/* Duration */}
+        <div className="flex items-center gap-4">
+          <span className="inline-flex items-center gap-1.5 text-[#64748B]" style={{ fontSize: 13, fontWeight: 500 }}>
+            <IconTimer />
+            13 months
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-[#64748B]" style={{ fontSize: 13, fontWeight: 500 }}>
+            <IconSunset />
+            Evening classes
+          </span>
+        </div>
+
+        {/* Salary */}
+        <div>
+          <p className="text-[#1E293B] font-extrabold tracking-[-0.5px]" style={{ fontSize: 20 }}>
+            {programme.salary}
+          </p>
+          <p className="text-[#94A3B8]" style={{ fontSize: 12, fontWeight: 500 }}>
+            Average EU remote salary after graduation
+          </p>
+          <p className="text-[#CBD5E1]" style={{ fontSize: 12 }}>
+            {programme.salarySource}
+          </p>
+        </div>
+
+        {/* Details blocks */}
+        <div
+          className="flex flex-col rounded-2xl border border-[#E2E8F0] overflow-hidden"
+        >
+          {/* Modules */}
+          <div className="flex flex-col gap-2 p-4">
+            <p className="font-semibold uppercase tracking-widest text-[#94A3B8]" style={{ fontSize: 11 }}>
+              PROGRAMME MODULES
+            </p>
+            <div className="flex flex-col gap-1">
+              {programme.modules.map((m) => (
+                <p key={m} className="text-[#1E293B]" style={{ fontSize: 14 }}>
+                  · {m}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div className="h-px bg-[#E2E8F0]" />
+
+          {/* What you build */}
+          <div className="flex flex-col gap-2 p-4">
+            <p className="font-semibold uppercase tracking-widest text-[#94A3B8]" style={{ fontSize: 11 }}>
+              WHAT YOU BUILD
+            </p>
+            <div className="flex flex-col gap-1">
+              {programme.whatYouBuild.map((w) => (
+                <p key={w} className="text-[#1E293B]" style={{ fontSize: 14 }}>
+                  · {w}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div className="h-px bg-[#E2E8F0]" />
+
+          {/* Schedule */}
+          <div className="flex flex-col gap-2 p-4">
+            <p className="font-semibold uppercase tracking-widest text-[#94A3B8]" style={{ fontSize: 11 }}>
+              SCHEDULE
+            </p>
+            <div className="flex flex-col gap-0.5">
+              {programme.schedule.split("\n").map((line, i) => (
+                <p key={i} className="text-[#1E293B]" style={{ fontSize: 14 }}>
+                  {line}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Hide details button */}
+        <button
+          onClick={onClose}
+          className="flex h-[52px] w-full items-center justify-center gap-2 rounded-xl border border-[#E85D26] bg-white text-[#E85D26]"
+          style={{ fontSize: 15, fontWeight: 600 }}
+        >
+          Hide details
+          <IconChevronUp />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function Programmes() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const [openDetails, setOpenDetails] = useState<number | null>(null);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -144,6 +332,14 @@ export default function Programmes() {
 
   return (
     <section id="programmes" className="bg-white">
+      {/* ── Mobile details modal ── */}
+      {openDetails !== null && (
+        <ProgrammeDetailsModal
+          programme={programmes[openDetails]}
+          onClose={() => setOpenDetails(null)}
+        />
+      )}
+
       {/* ── Mobile (§05 Programmes Mobile) ── */}
       <div className="md:hidden flex flex-col gap-5 pt-10 pb-10">
         <FadeUp>
@@ -165,7 +361,7 @@ export default function Programmes() {
           className="flex h-[512px] items-center gap-3 overflow-x-auto pl-5 pr-5 scrollbar-hide"
           style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
         >
-          {programmes.map((p) => (
+          {programmes.map((p, idx) => (
             <article
               key={p.name}
               className="flex h-[476px] w-[300px] flex-shrink-0 flex-col overflow-hidden rounded-[20px] border border-[#E2E8F0] bg-white"
@@ -214,14 +410,15 @@ export default function Programmes() {
                       Average EU remote salary after graduation
                     </p>
                   </div>
-                  <a
-                    href="#consult"
+                  <button
+                    type="button"
+                    onClick={() => setOpenDetails(idx)}
                     className="flex h-[45px] w-[260px] max-w-full items-center justify-center gap-2 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] text-[#475569]"
                     style={{ fontSize: 14, fontWeight: 600 }}
                   >
                     Show details
                     <IconChevronDown />
-                  </a>
+                  </button>
                 </div>
               </div>
             </article>
