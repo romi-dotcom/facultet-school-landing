@@ -3,7 +3,7 @@ import FadeUp from "./FadeUp";
 export default function WhatsAppCTA() {
   return (
     <section
-      className="flex items-center justify-center"
+      className="hidden md:flex items-center justify-center"
       style={{ background: "#F7F5F2", padding: "24px 0" }}
     >
       <FadeUp>
