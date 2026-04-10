@@ -157,9 +157,6 @@ export default function Programmes() {
             <p className="text-[#64748B]" style={{ fontSize: 14 }}>
               Evening · 13+ months · Licensed · Permit Renewal
             </p>
-            <p className="text-[#94A3B8]" style={{ fontSize: 12 }}>
-              Trusted by 423 students from 12 countries
-            </p>
           </div>
         </FadeUp>
 
@@ -281,11 +278,6 @@ export default function Programmes() {
               <p className="text-[#64748B]" style={{ fontSize: 16 }}>
                 Evening · 13+ months · Licensed · Permit Renewal
               </p>
-              <div className="h-3" />
-              <p className="text-[#94A3B8]" style={{ fontSize: 13 }}>
-                Trusted by 423 students from 12 countries
-              </p>
-              <div className="h-2" />
             </div>
           </FadeUp>
 
