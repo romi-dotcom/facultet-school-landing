@@ -200,7 +200,7 @@ export default function Programmes() {
         </FadeUp>
 
         <div
-          className="flex gap-3 overflow-x-auto pr-5 scrollbar-hide"
+          className="flex gap-3 overflow-x-auto pr-5 pb-4 scrollbar-hide"
           style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch", scrollPaddingLeft: "20px" }}
         >
           <div className="flex-shrink-0 w-5" aria-hidden="true" />
